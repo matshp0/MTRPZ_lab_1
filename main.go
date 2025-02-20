@@ -1,17 +1,23 @@
 package main
 
-import "fmt";
-
-func solveEquation(a, b, c float64) (float64, float64){
-}
 import (
-  "fmt"
+	"math"
 )
-func main() {
-  s := "gopher"
-  fmt.Println("Hello and welcome, %s!", s)
 
-  for i := 1; i <= 5; i++ {
-	fmt.Println("i =", 100/i)
-  }
+func solveEquation(a, b, c float64) (*float64, *float64) {
+	d := b*b - 4*a*c
+	if d < 0 {
+		return nil, nil
+	}
+	if d == 0 {
+		x1 := -b / (2 * a)
+		return &x1, nil
+	}
+	sqrt := math.Sqrt(d)
+	x1 := (-b - sqrt) / (2 * a)
+	x2 := (-b + sqrt) / (2 * a)
+	return &x1, &x2
+}
+
+func main() {
 }
