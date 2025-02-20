@@ -60,10 +60,7 @@ func solveEquation(a, b, c float64) (*float64, *float64) {
 	return &x1, &x2
 }
 
-func main() {
-	fmt.Printf("\033[0m")
-	a, b, c := processInput()
-	x1, x2 := solveEquation(a, b, c)
+func logOutput(x1, x2 *float64) {
 	if x1 == nil {
 		fmt.Println("No roots found")
 		return
@@ -73,4 +70,12 @@ func main() {
 		return
 	}
 	fmt.Printf("Found two roots: %f, %f", *x1, *x2)
+}
+
+func main() {
+	var x1, x2 *float64
+	fmt.Printf("\033[0m")
+	a, b, c := processInput()
+	x1, x2 = solveEquation(a, b, c)
+	logOutput(x1, x2)
 }
